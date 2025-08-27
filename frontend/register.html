@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/regStyle.css">
+    <title>Registration</title>
+</head>
+<body>
+    <div class="main">
+        <div class="main__logo">
+            <img src="\Images\Aljazira_Bank_Logo 1.png">
+        </div>
+        <div class="main__greeting">
+            <p id="p1">Hi, Welcome Back</p>
+            <p id="p2">Enter your credentials to continue</p>
+        </div>
+        <form method="POST" action="/users">
+            <div class="main__text">
+                <label for="email">Email Address</label>
+                <input type="text" id="email" name="name">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password">
+                <button type="button" onclick="obs()" id="eye1"><img src="\Images\eye.png"></button>
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id="confirm">
+                <button type="button" onclick="obs2()" id="eye2"><img src="\Images\eye.png"></button>
+            </div>    
+           
+        <div class="main__login">
+            <button type="submit">Register</button>
+            <hr>
+            </form>
+            <a href="/frontend/loginPage.html" id="last">Already have an account?</a>
+        </div> 
+    
+    <script src="/frontend/regScript.js"></script>
+</body>
+</html>

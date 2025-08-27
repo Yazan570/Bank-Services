@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Al Jazira - Services Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <div class="sidebar__logo">
+                    <img src="\Images\image.png" alt="Bank Al Jazira" class="sidebar__logo-img">
+                </div>
+            </div>
+            
+            <div class="sidebar__user">
+                <div class="sidebar__user-avatar">
+                    <img src="\Images\Picture.png" alt="Mike Ahamad" class="sidebar__user-img">
+                </div>
+                <div class="sidebar__user-info">
+                    <h3 class="sidebar__user-name"></h3>
+                    <p class="sidebar__user-role"></p>
+                </div>
+            </div>
+            
+            <nav class="sidebar__nav">
+                <ul class="sidebar__nav-list">
+                    <li class="sidebar__nav-item sidebar__nav-item--active" id="catalogTab">
+                        <a href="#" class="sidebar__nav-link">
+                            <img src="\Images\Product Documents.png" class="fixerrr sidebar__nav-icon">
+                            <span class="sidebar__nav-text">Services Catalog</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link"  id="usersTab">
+                            <img src="\Images\People.png" class="fas fa-users sidebar__nav-icon">
+                            <span class="sidebar__nav-text">Users</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <img src="\Images\Data Protection.png" class="fas fa-shield-alt sidebar__nav-icon">
+                            <span class="sidebar__nav-text">Roles & Permissions</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <img src="\Images\Services.png" class="fas fa-cog sidebar__nav-icon">
+                            <span class="sidebar__nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Header -->
+            <header class="header">
+                <div class="header__user-actions">
+                    <button class="mobile-toggle" onclick="toggleSidebar()">
+                    ...
+                    </button>
+                    <form class="logoutForm" action="/users/logout" method="POST">
+                        <button class="header__user-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </form>
+                    <button class="header__notification">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="header__language">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="header__user-avatar">
+                        <img src="\Images\Picture.png" alt="User" class="header__user-img">
+                    </div>
+                </div>
+            </header>
+            <!-- Start from here -->
+            <div class="header__content">
+                <div class="header__icon">
+                        <img src="\Images\Product Documents.png" alt="icon1" class="header__icon-img">
+                    </div>
+                        <h1 class="header__title">Services Catalog</h1>
+                        <p class="header__subtitle">Use this page to manage your service catalogs , the fast and easy way.</p>
+            </div>
+            <div class="header__right">
+                    <button class="header__btn" onclick="popupMenu(event)" id="btnHead" >Add Service Catalog</button>
+            </div>
+            <!-- Search Section -->
+            <section class="search">
+                <div class="search__container">
+                    <div class="search__input-wrapper">
+                        <input type="text" class="search__input" placeholder="Search by Service catalog name ...">
+                        <button class="search__btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section class="content">
+                <div class="content__view-toggle">
+                        <span class="content__showing">Showing: <strong id="countServices">0 Services</strong></span>
+                        <div class="el3ab">
+                        <button class="content__view-btn content__view-btn--active">
+                            <img src="\Images\Table rows.png"></i>
+                        </button>
+                        <button class="content__view-btn">
+                            <img src="\Images\Group.png"></i>
+                        </button>
+                        </div>
+                </div>
+                <!-- Service Cards Grid -->
+                <div class="services">
+                    <div class="services__grid" id="cards__grid">
+                        <!-- Service Card 1 -->
+                        <div class="service-card" id="uni" data-service-id="0">
+                            <div class="service-card__header">
+                                <div class="service-card__icon" id="cardIconDiv">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <button class="service-card__menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                                <button type="button" onclick="handleDelete(event)" class="card__delete1">Delete</button>
+                                <button type="button" onclick="popupMenu(event)" class="card__Update" id="edit">Edit</button>
+                            <div class="service-card__content">
+                                <h3 class="service-card__title" id="cardTitle">Service Catalog</h3>
+                                <p class="service-card__category" id="cardCategory"></p>
+                                <p class="service-card__description" id="cardDescription"></p>
+                            </div> 
+                        </div>
+
+                        <!-- Service Card 2 -->
+                        <div class="service-card" id="desktop" data-service-id="0">
+                            <div class="service-card__header">
+                                <div class="service-card__icon service-card__icon--secondary" id="cardIconDiv2">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <button class="service-card__menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                                <button type="button" onclick="handleDelete(event)" class="card__delete2">Delete</button>
+                                <button type="button" onclick="popupMenu(event)" class="card__Update" id="edit">Edit</button>
+                            <div class="service-card__content">
+                                <h3 class="service-card__title" id="cardTitle">Service Catalog</h3>
+                                <p class="service-card__category" id="cardCategory">Category Name</p>
+                                <p class="service-card__description" id="cardDescription">Lorem ipsum dolor sit amet consectetur. Ultrices malesuada ultrices commodo blandit nec egestas sodales eget. Ut interdum augue sed viverra amet.</p>
+                            </div>
+                        </div>
+
+                        <!-- Service Card 3 -->
+                        <div class="service-card" id="print" data-service-id="0">
+                            <div class="service-card__header">
+                                <div class="service-card__icon service-card__icon--dark" id="cardIconDiv3">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                                <button class="service-card__menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                                <button type="button" onclick="handleDelete(event)" class="card__delete3">Delete</button>
+                                <button type="button" onclick="popupMenu(event)" class="card__Update" id="edit">Edit</button>
+                            <div class="service-card__content">
+                                <h3 class="service-card__title" id="cardTitle">Service Catalog</h3>
+                                <p class="service-card__category" id="cardCategory">Category Name</p>
+                                <p class="service-card__description" id="cardDescription">Lorem ipsum dolor sit amet consectetur. Ultrices malesuada ultrices commodo blandit nec egestas sodales eget. Ut interdum augue sed viverra amet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination">
+                <div class="pagination__container">
+                    <button class="pagination__btn pagination__btn--prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination__btn pagination__btn--active">1</button>
+                    <button class="pagination__btn">2</button>
+                    <button class="pagination__btn">3</button>
+                    <button class="pagination__btn pagination__btn--next yameen">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+        <div class="users">
+            
+        </div>
+        <div class="popup">
+           <div class="popup__header">
+                <h2>Service Catalog Preview</h2>
+                <button onclick="closeMenu()"><img src="\Images\Icon Artwork.png"></button>
+           </div>
+           <div class="popup__content">
+                <div class="popup__initial">
+                    <div class="popup__subtitle">
+                        <div class="popup__icon">
+                            <img src="\Images\Vector.png">
+                        </div>
+                        <div class="popup__kalam">
+                            <p>Add New Service Catalog</p>
+                            <small>Fill in the fields below to create a new service</small>
+                        </div>
+                    </div>
+                    <button onclick="closeMenu()"><img src="\Images\back.png"><p>Go back to all services</p></button>
+                </div>
+                <div class="popup__grid">
+                    <div class="popup__left">
+                        <div class="popup__left-1">
+                                <div class="line1">
+                                    <div class="input-container">
+                                        <input type="text" id="txt1" required>
+                                        <label for="txt1">Service Name</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="txt2" required>
+                                        <label for="txt2">Service Code</label>
+                                    </div>
+                                </div>
+                                <div class="line2">
+                                    <div class="little-icons">
+                                    <div class="together">
+                                    <small>Normal</small>
+                                    <img src="\Images\chevron-left.png">
+                                    </div>
+                                    <img src="\Images\Vector (2).png">
+                                    <img src="\Images\Vector (3).png">
+                                    <img src="\Images\Vector (4).png">
+                                    <img src="\Images\Vector (5).png">
+                                    <img src="\Images\Vector (6).png">
+                                    <img src="\Images\Vector (7).png"> 
+                                    <img src="\Images\Vector (8).png">
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="serviceDescription">
+                                        <label for="serviceDescription" id="fix">Service Description</label>
+                                    </div>
+                                </div>
+                                <hr id="hrm">
+                                <div class="line3">
+                                    <div class="Service_Type">
+                                        <label>Service Type</label><br>
+                                        <input id="bb" type="radio" name="stype" value="Business Banking"><label for="bb">Business Banking</label>
+                                        <input id="bs" type="radio" name="stype" value="Business Support"><label for="bs">Business Support</label>
+                                    </div>
+                                    <div class="Fin_Service">
+                                        <label>Financial / Non-Financial Service</label><br>
+                                        <input id="f" type="radio" name="fn" value="Financial"><label for="f">Financial</label>
+                                        <input id="nf" type="radio" name="fn" value="Non-Financial Service"> <label for="nf">Non-Financial Service</label>  
+                                    </div>
+                                </div>
+                                <div class="line4">
+                                    <div class="input-container">
+                                        <input id="ownerText" type="text">
+                                        <label for="ownerText">Business Owner</label>
+                                    </div>
+                                    <div class="Common-Service">
+                                        <label>Common Service</label><br>
+                                        <input id="yes" type="radio" name="common" value="yes"><label for="yes">Yes</label>
+                                        <input id="no" type="radio" name="common" value="no"><label for="no">No</label>
+                                    </div>
+                                </div>    
+                                <div class="line5">
+                                    <div class="input-container">
+                                        <input id="businessPriority" type="text">
+                                        <label for="businessPriority">Business Priority</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input id="businessContacts" type="text">
+                                        <label for="businessContacts">Business Contacts</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input id="ITServiceOwners" type="text">
+                                        <label for="ITServiceOwners">IT Service Owner(s)</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input id="ITContact" type="text">
+                                        <label for="ITContact">IT Contact</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="popup__left-2">
+                            <div class="part1">
+                                <p>Additional Informations</p>
+                            </div>
+                            <div class="part2">
+                                <div class="part2__controller">
+                                <button>Service Features</button>
+                                <button>Service Dependency</button>
+                                <button>Service Support</button>
+                                <button>Service Trail</button>
+                                </div>
+                            </div>
+                            <div class="part3">
+                                <div class="SLA">
+                                    <label>Service Level Agreement (SLA)</label><br>
+                                    <div class="slaRadio">
+                                    <div><input type="radio" id="yes2" value="yes2" name="sla"><label for="yes2">Yes</label></div>
+                                    <div><input type="radio" id="no2" value="no2" name="sla"><label for="no2">No</label></div>
+                                    </div>
+                                </div>
+                                <div class="part3Grid">
+                                    <div class="input-container">
+                                        <input type="text" id="serviceHours">
+                                        <label for="serviceHours">Service Hours</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="serviceDays">
+                                        <label for="serviceDays">Service Days</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" name="serviceDeliveryMethods" id="serviceDeliveryMethods">
+                                        <label for="serviceDeliveryMethods">Service Delivery Methods</label>
+                                        <img id="sahem" class="sahem1" src="\Images\lastVector.png">
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" name="ch-del" id="ch-del">
+                                        <label for="ch-del">Channel / Delivery</label>
+                                        <img id="sahem" class="sahem2" src="\Images\lastVector.png">
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="serviceQual">
+                                        <label for="serviceQual">Service Qualification</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="serviceLife">
+                                        <label for="serviceLife">Service lifecycle frequency</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="serviceReviews">
+                                        <label for="serviceReviews">Service Reviews</label>
+                                        <img id="imm" src="\Images\calendar-range.png">
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="requestProcedures">
+                                        <label for="requestProcedures">Request Procedures</label>
+                                    </div>
+                                </div>
+                                <label id="alone">Pricing & Chargeback</label><br>
+                                <div class="part3Grid2">
+                                    <div class="input-container">
+                                        <input type="text" id="prices">
+                                        <label for="prices">Prices</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="fees">
+                                        <label for="fees">Fees</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="text" id="commision">
+                                        <label for="commision">Commission</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup__right">
+                        <div class="popup__right-1">
+                            <p id="ppub">Publish</p>
+                            <hr id="hr1">
+                            <div class="publishedSlider">
+                            <img id="slider" src="\Images\Vector (9).png">
+                            <label id="pub">Published</label>
+                            </div>
+                            <hr id="hr2">
+                            <div class="labelGrid">
+                                <label id="gray">Status</label>
+                                <label id="bold">Draft</label>
+                                <label id="gray">Visibility</label>
+                                <label id="bold">Visible</label>
+                            </div>
+                            <hr id="hr3">
+                            <div class="buttonGrid">
+                                <button id="blueb">Preview</button>
+                                <button id="blueb">Save as Draft</button>
+                            </div>
+                            <button id="bigalone" onclick="collectData()">Publish Now</button>
+                        </div>
+                        <div class="popup__right-2">
+                            <p id="ppub" class="g">Service Categories</p>
+                            <button id="blueb">Add Category</button>
+                            <hr id="hr4">
+                            <div class="checkboxGrid">
+                                <div class="rela"><input id="it" type="checkbox" value="IT & Computer"><label for="it">IT & Computer</label></div>
+                                <div class="rela"><input id="sales" type="checkbox" value="Sales & Marketing"><label for="sales">Sales & Marketing</label></div>
+                                <div class="rela"><input id="fServices" type="checkbox" value="Financial Services"><label for="fServices">Financial Services</label></div>
+                                <div class="rela"><input id="fandBusiness" type="checkbox" value="Finance And Business"><label for="fandBusiness">Finance And Business</label></div>
+                            </div>
+                        </div>
+                        <div class="popup__right-3">
+                            <div class="e5la9">
+                            <p id="ppub">Sub Services</p>
+                            <button id="blueb">Add Sub Services</button>
+                            </div>
+                            <hr id="hr5">
+                            <div class="middleKalam"><p>You can add sub-service from this section</p></div>
+                        </div>
+                        <div class="popup__right-4">
+                            <div class="e5la9">
+                            <p id="ppub">Linked Services</p>
+                            <button id="blueb">Add Linked Services</button>
+                            </div>
+                            <hr id="hr5">
+                            <div class="middleKalam"><p>You can add linked service from this section</p></div>
+                        </div>
+                        <div class="popup__right-5">
+                            <p id="ppub">Add Image</p>
+                            <hr id="hr6">
+                            <label for="input-file" id="drop-area">
+                                <div  class="addImageBox" id="image-view">
+                                    <div class="candword" >
+                                        <input type="file" accept="image/*" id="input-file" hidden>    
+                                        <img id="cloud" src="\Images\Vector (10).png">
+                                        <p id="dragKalam">Drag & Drop Image here</p>
+                                    </div>
+                                </div>
+                                <button id="remove-btn" style="display: none;">Remove Image</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+           </div> 
+        </div>
+    </div>
+            <table class="userInfo">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <tr>
+                        <td id="idPar">1</td>
+                        <td id="namePar">Yaz</td>
+                        <td>
+                            <button onclick="deleteUser(event)" id="deleteUserBttn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
+
+
